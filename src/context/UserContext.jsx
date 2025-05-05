@@ -42,7 +42,7 @@ const UserContext = ({ children }) => {
 
     // Question 1: "What is your name?"
     if (lowerCasePrompt.includes("your name")) {
-      return "My name is Tara.";
+      return "My name is Tara. I was developed by Mucharla Raju.";
     }
 
     // Question 2: "Who developed you?" or "Tell me about yourself" or "Who is your developer?"
@@ -52,6 +52,17 @@ const UserContext = ({ children }) => {
       lowerCasePrompt.includes("who is your developer")
     ) {
       return "I am Tara, your advanced virtual assistant. I was developed by Raju, a passionate BTech student.";
+    }
+
+    // Question 3: "Tell me about your developer" or "Tell me about Raju"
+    if (
+      lowerCasePrompt.includes("tell me about your developer") ||
+      lowerCasePrompt.includes("tell me about raju") ||
+      lowerCasePrompt.includes("tell me about mucharla raju") ||
+      lowerCasePrompt.includes("who is mucharla raju") ||
+      lowerCasePrompt.includes("who is raju") ||
+    ) {
+      return "My developer, Mucharla Raju, is a passionate individual with hobbies like reading self-help books and watching anime. His goal is to become a full-stack web developer. He is hardworking, creative, and always eager to learn new things.";
     }
 
     return null; // Return null if no custom question matches
@@ -72,11 +83,17 @@ const UserContext = ({ children }) => {
       const aiResult = await run(prompt); // Call the run function
       console.log("AI Result:", aiResult);
 
-      // Limit the response to 200 characters
-      const limitedResponse = aiResult.length > 200 ? aiResult.substring(0, 200) + "..." : aiResult;
+      // Ensure the response is concise but complete
+      let limitedResponse = aiResult;
+      if (aiResult.length > 400) {
+        const truncated = aiResult.substring(0, 400); // Truncate to 400 characters
+        const lastSentenceEnd = truncated.lastIndexOf("."); // Find the last period
+        limitedResponse =
+          lastSentenceEnd !== -1 ? truncated.substring(0, lastSentenceEnd + 1) : truncated + "..."; // Ensure it ends at a sentence boundary
+      }
 
-      setPrompt(limitedResponse); // Update the prompt with the truncated AI's response
-      speak(limitedResponse); // Use the truncated AI response in the speak function
+      setPrompt(limitedResponse); // Update the prompt with the processed response
+      speak(limitedResponse); // Use the processed response in the speak function
     } catch (error) {
       console.error("Error in AI Response:", error.message);
       setPrompt("Error generating response. Please try again.");
