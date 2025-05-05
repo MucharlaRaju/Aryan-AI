@@ -60,7 +60,7 @@ const UserContext = ({ children }) => {
       lowerCasePrompt.includes("tell me about raju") ||
       lowerCasePrompt.includes("tell me about mucharla raju") ||
       lowerCasePrompt.includes("who is mucharla raju") ||
-      lowerCasePrompt.includes("who is raju") ||
+      lowerCasePrompt.includes("who is raju")
     ) {
       return "My developer, Mucharla Raju, is a passionate individual with hobbies like reading self-help books and watching anime. His goal is to become a full-stack web developer. He is hardworking, creative, and always eager to learn new things.";
     }
