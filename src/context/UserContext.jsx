@@ -42,7 +42,7 @@ const UserContext = ({ children }) => {
 
     // Question 1: "What is your name?"
     if (lowerCasePrompt.includes("your name")) {
-      return "My name is Aryan.";
+      return "My name is Tara.";
     }
 
     // Question 2: "Who developed you?" or "Tell me about yourself" or "Who is your developer?"
@@ -51,7 +51,7 @@ const UserContext = ({ children }) => {
       lowerCasePrompt.includes("tell me about yourself") ||
       lowerCasePrompt.includes("who is your developer")
     ) {
-      return "I am Aryan, your advanced virtual assistant. I was developed by Raju, a passionate BTech student.";
+      return "I am Tara, your advanced virtual assistant. I was developed by Raju, a passionate BTech student.";
     }
 
     return null; // Return null if no custom question matches

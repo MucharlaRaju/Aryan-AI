@@ -9,13 +9,13 @@ const App = () => {
   const { speaking, setSpeaking, recognition, prompt, response } = useContext(datacontext);
 
   return (
-    <main className="flex items-center justify-center min-h-screen bg-black text-white">
+    <main className="flex items-center justify-center min-h-screen bg-black text-white overflow-hidden">
       <div className="container w-full max-w-3xl p-6 text-center space-y-8">
         
         {/* AI Avatar */}
         <div className="flex justify-center">
           <img
-            className="h-72 object-cover rounded-full shadow-2xl border-4 border-cyan-500"
+            className="h-72 object-cover rounded-full shadow-2xl"
             src={va}
             alt="Tara AI"
             id="Tara"
@@ -24,7 +24,7 @@ const App = () => {
 
         {/* Greeting */}
         <h2 className="text-4xl font-extrabold bg-gradient-to-r from-cyan-500 to-fuchsia-500 bg-clip-text text-transparent">
-          Hi <span className="font-extrabold">Raj</span>, I'm Aryan, Your Advanced Virtual Assistant
+          Hi <span className="font-extrabold">Raj</span>, I'm Tara, Your Advanced Virtual Assistant
         </h2>
 
         {/* Button / GIF Section with Fixed Height */}
